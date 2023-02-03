@@ -24,25 +24,25 @@ public class TheApplication extends JFrame{
 		setVisible(true);
 		
 		Color col;
-		 //head		
-  		   col = new Color(255, 0, 0);
-           head.set(col, headX, headY, headXsize, headYsize);
-           Shapes.add(head);
+		//head		
+		col = new Color(255, 0, 0);
+        head.set(col, headX, headY, headXsize, headYsize);
+        Shapes.add(head);
 			
-           //left eye white          
-           col = new Color(255, 255, 255);
-           lefteye.set(col, eyeX, eyeY, eyeSize);
-           Shapes.add(lefteye);
+        //left eye white          
+        col = new Color(255, 255, 255);
+        lefteye.set(col, eyeX, eyeY, eyeSize);
+        Shapes.add(lefteye);
 			
-           //right eye white      
-           col = new Color(255, 255, 255);
-           righteye.set(col, eyeX+eyeGap, eyeY, eyeSize);
-           Shapes.add(righteye);
+        //right eye white      
+        col = new Color(255, 255, 255);
+        righteye.set(col, eyeX+eyeGap, eyeY, eyeSize);
+        Shapes.add(righteye);
 			
-           //mouth       
-           col = new Color(0,0,0);
-           mouth.set(col, mouthX, mouthY, mouthXsize, mouthYsize);
-           Shapes.add(mouth);	
+        //mouth       
+        col = new Color(0,0,0);
+        mouth.set(col, mouthX, mouthY, mouthXsize, mouthYsize);
+        Shapes.add(mouth);	
 	}
 	
 	public void paint(Graphics g)

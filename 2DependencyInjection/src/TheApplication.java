@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.io.Serial;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import uk.ac.leedsbeckett.mullier.sesc.*;
@@ -9,12 +10,13 @@ public class TheApplication extends JFrame{
 	/**
 	 * example of Dependency Injection
 	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	final int XSIZE = 640, YSIZE = 480;
 	int headX = 10, headY = 50, headXsize = 150, headYsize = 130;
-	int eyeX = headX+(headXsize/4), eyeY = headY+(headYsize/5), eyeSize = headXsize /10, eyeGap = headXsize/3; 
+	int eyeX = headX+(headXsize/4), eyeY, eyeSize = headXsize /10, eyeGap = headXsize/3;
 	int mouthX = eyeX,  mouthY = eyeY + headY, mouthXsize = eyeSize*3, mouthYsize = eyeSize;
-	ArrayList<Object> Shapes = new ArrayList<Object>();
+	 ArrayList<Object> Shapes;
 	
 	
 	public TheApplication(Shape head, Shape lefteye, Shape righteye, Shape mouth)
@@ -27,10 +29,12 @@ public class TheApplication extends JFrame{
 		//head		
 		col = new Color(255, 0, 0);
         head.set(col, headX, headY, headXsize, headYsize);
+        Shapes = new ArrayList<>();
         Shapes.add(head);
 			
         //left eye white          
         col = new Color(255, 255, 255);
+        eyeY = headY+(headYsize/5);
         lefteye.set(col, eyeX, eyeY, eyeSize);
         Shapes.add(lefteye);
 			
@@ -47,19 +51,16 @@ public class TheApplication extends JFrame{
 	
 	public void paint(Graphics g)
 	{
-		for (int i = 0; i<Shapes.size(); i++)
-		{
-			Shape s;
-			s = (Shape) Shapes.get(i);
-			if (s != null)
-			{
-				s.draw(g);
-				System.out.println(s.toString());
-			}
-			else
-				System.out.println("invalid Shape in array"); //shouldn't happen as factory does not produce rubbish
+        for (Object shape : Shapes) {
+            Shape s;
+            s = (Shape) shape;
+            if (s != null) {
+                s.draw(g);
+                System.out.println(s);
+            } else
+                System.out.println("invalid Shape in array"); //shouldn't happen as factory does not produce rubbish
 
-         }
+        }
 		g.setColor(Color.BLACK);
 		g.drawString("Shape Example with  DI", 100, 100);
 		
